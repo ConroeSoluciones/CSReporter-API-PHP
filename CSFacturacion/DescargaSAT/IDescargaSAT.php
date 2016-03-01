@@ -16,6 +16,7 @@ interface IDescargaSAT {
      * a los parámetros especificados. Si se especifica el callback, éste será
      * llamado una vez la consulta se encuentre terminada.
      * 
+     * @param Credenciales $credenciales credenciales de acceso al SAT.
      * @param Parametros $params los parámetros de búsqueda.
      * @param mixed $callback el nombre de la función que será llamada cuando
      * se complete esta consulta, puede ser nulo (para realizar el tracking
@@ -25,7 +26,7 @@ interface IDescargaSAT {
      * @throws \CSFacturacion\DescargaSAT\ConsultaInvalida si ocurre un problema
      * con los parámetros de la consulta.
      */
-    function consultar(Parametros $params, $callback);
+    function consultar(Credenciales $credenciales, Parametros $params, $callback);
 
     /**
      * Es posible buscar consultas por folio específico, en caso que se hayan

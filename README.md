@@ -18,13 +18,15 @@ Ejemplo de uso:
 
     // una instancia de un IDescargaSAT debe permitir realizar múltiples
     // consultas, de un mismo contrato
-    $descargaSAT = new DescargaSAT("usuario", "pass");
+    $descargaSAT = new DescargaSAT(new Credenciales("usuario_cs", "pass"));
 
     // realizar una nueva consulta (la consulta es de sólo lectura),
     // la API debe manejar los tiempos de espera y permitir recibir una cadena
     // como parámetro, la cual representa la función (callback) que debe 
     // ejecutarse cuando la consulta haya terminado
-    $consulta = $descargaSAT->consultar(new Parametros()
+    $consulta = $descargaSAT->consultar(
+            new Credenciales("RFC", "pass"),
+            new Parametros()
             ->fechaInicio("2016-01-01T00:00:00")
             ->status(Parametros::STATUS_VIGENTE)
             ->tipo(Parametros::TIPO_EMITIDAS),
