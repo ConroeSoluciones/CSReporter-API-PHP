@@ -1,22 +1,25 @@
 <?php
 
+namespace CSFacturacion\CSReporter;
+
 /**
  * Credenciales de acceso genéricas.
+ * TODO: Comprobaciones sobre los datos ingresados.
  *
  * @author emerino
  */
 class Credenciales {
 
-    private $username;
+    private $usuario;
 
     private $password;
     
     function __construct($username, $password) {
-        $this->username = $username;
+        $this->usuario = $username;
         $this->password = $password;
     }
-    function getUsername() {
-        return $this->username;
+    function getUsuario() {
+        return $this->usuario;
     }
 
     function getPassword() {

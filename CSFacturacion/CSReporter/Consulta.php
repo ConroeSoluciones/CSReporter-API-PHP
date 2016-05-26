@@ -1,11 +1,11 @@
 <?php
 
-namespace CSFacturacion\DescargaSAT;
+namespace CSFacturacion\CSReporter;
 
 /**
  * 'Enum' que sirve para listar los distintos STATUS posibles de una consulta.
  */
-class Status {
+class StatusConsulta {
     const EN_ESPERA = "EN_ESPERA";
     const EN_PROCESO = "EN_PROCESO";
     const DESCARGANDO = "DESCARGANDO";
@@ -21,7 +21,7 @@ class Status {
  *
  * @author emerino
  */
-interface IConsulta {
+interface Consulta {
 
     /**
      * El status de la consulta puede ser:
@@ -124,4 +124,13 @@ interface IConsulta {
      * CFDI de esta consulta.
      */
     function getCFDI($folio);
+
+    /**
+     * Devuelve el XML del CFDIMeta dado. En ocasiones puede no haber un XML 
+     * asociado, en estos casos devuelve null. 
+     * 
+     * @param string $folio del CFDIMeta.
+     * @return string el XML asociado con el CFDIMeta o null si no hay ninguno.
+     */
+    function getCFDIXML($folio);
 }

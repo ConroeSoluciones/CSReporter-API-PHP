@@ -1,38 +1,30 @@
 <?php
 
+namespace CSFacturacion\CSReporter;
+
+/*
+ * Copyright 2016 NueveBit, todos los derechos reservados.
+ */
+
 /**
- * Clase que define los parámetros de búsqueda disponibles en el WS, a través
- * de una API fluida.
+ * Builder para crear instancias de Parametros.
  *
  * @author emerino
  */
-class Parametros {
+class ParametrosBuilder {
 
-    const STATUS_VIGENTE = "VIGENTE";
-
-    const STATUS_CANCELADO = "CANCELADO";
-
-    const TIPO_EMITIDAS = "INGRESO";
-
-    const TIPO_RECIBIDAS = "EGRESO";
-
-    private $rfcEmisor;
-
-    private $rfcReceptor;
-
+    private $rfcBusqueda;
     private $fechaInicio;
-
     private $fechaFin;
-
     private $status;
-
     private $tipo;
+    private $servicio;
 
     /**
      * Crea una nueva instancia
      */
     function __construct() {
-        
+
         // puede no especificarse, en ese caso se tomará la fecha actual
         $this->fechaFin = strftime("%G-%m-%dT%H:%M:%S", time());
 
@@ -41,13 +33,8 @@ class Parametros {
         $this->tipo = null;
     }
 
-    function rfcEmisor($rfc) {
-        $this->rfcEmisor = $rfc;
-        return $this;
-    }
-
-    function rfcReceptor($rfc) {
-        $this->rfcReceptor = $rfc;
+    function rfcBusqueda(RFC $rfc) {
+        $this->rfcBusqueda = $rfc;
         return $this;
     }
 
@@ -65,18 +52,22 @@ class Parametros {
         $this->status = $status;
         return $this;
     }
-    
+
     function tipo($tipo) {
         $this->tipo = $tipo;
         return $this;
     }
-    
-    function getRfcEmisor() {
-        return $this->rfcEmisor;
+
+    function servicio($servicio) {
+        $this->servicio = $servicio;
+        return $this;
+    }
+    function getServicio() {
+        return $this->servicio;
     }
 
-    function getRfcReceptor() {
-        return $this->rfcReceptor;
+        function getRfcBusqueda() {
+        return $this->rfcBusqueda;
     }
 
     function getFechaInicio() {
@@ -94,6 +85,5 @@ class Parametros {
     function getTipo() {
         return $this->tipo;
     }
-
 
 }
