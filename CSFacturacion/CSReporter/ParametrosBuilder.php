@@ -18,7 +18,7 @@ class ParametrosBuilder {
     private $fechaFin;
     private $status;
     private $tipo;
-    private $servicio = Servicio::CSREPORTER;
+    private $servicio = Servicio::CSDESCARGASAT;
 
     /**
      * Crea una nueva instancia

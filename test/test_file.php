@@ -18,7 +18,7 @@ $csCredenciales = new Credenciales("XAAA010101AAA", "");
 var_dump($csCredenciales);
 $csReporter = new CSReporterImpl($csCredenciales);
 
-$satCredenciales = new Credenciales("CSO1304138Z0", "Conroe13");
+$satCredenciales = new Credenciales("XAAA010101AAA", "");
 $paramsBuilder = new ParametrosBuilder();
 $consulta = $csReporter->consultar($satCredenciales, $paramsBuilder
                 ->fechaInicio("2016-01-01T00:00:00")
