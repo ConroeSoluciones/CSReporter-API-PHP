@@ -3,38 +3,6 @@
 namespace CSFacturacion\CSReporter;
 
 /**
- * 'Enum' para los posibles status de un CFDI.
- *
- * @author emerino
- */
-class StatusCFDI {
-
-    const VIGENTE = "VIGENTE";
-    const CANCELADO = "CANCELADO";
-    const TODOS = "TODOS";
-
-}
-
-/**
- * 'Enum' para representar los tipos de un comprobante.
- *
- * @author emerino
- */
-class TipoCFDI {
-
-    const EMITIDAS = "EMITIDAS";
-    const RECIBIDAS = "RECIBIDAS";
-
-}
-
-class Servicio {
-
-    const CSREPORTER = 8;
-    const CSDESCARGASAT = 11;
-
-}
-
-/**
  * Clase que define los parámetros de búsqueda disponibles en el WS. Sólo
  * lectura, para construir instancias, utilizar un ParametrosBuilder.
  *

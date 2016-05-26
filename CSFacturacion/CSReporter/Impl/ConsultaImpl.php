@@ -23,10 +23,12 @@ class ConsultaImpl implements Consulta {
     private $folio;
     private $totalResultados = -1;
     private $paginas = -1;
+    private $requestFactory;
 
-    function __construct($folio, UserAgent $userAgent) {
+    function __construct($folio, UserAgent $userAgent, RequestFactory $requestFactory) {
         $this->userAgent = $userAgent;
         $this->folio = $folio;
+        $this->requestFactory = $requestFactory;
     }
 
     public function getCFDI($folio) {
@@ -62,19 +64,19 @@ class ConsultaImpl implements Consulta {
     }
 
     private function getResumen() {
-        $request = RequestFactory::newResumenRequest($this->folio);
+        $request = $this->requestFactory->newResumenRequest($this->folio);
         return $this->userAgent->open($request)->getAsJson();
     }
 
     public function getResultados($pagina) {
         $this->validarTerminada();
 
-        $request = RequestFactory::newResultadosRequest($this->folio, $pagina);
+        $request = $this->requestFactory->newResultadosRequest($this->folio, $pagina);
         return $this->userAgent->open($request)->getAsJson();
     }
 
     public function getStatus() {
-        $statusRequest = RequestFactory::newProgresoRequest($this->folio);
+        $statusRequest = $this->requestFactory->newProgresoRequest($this->folio);
         $json = $this->userAgent->open($statusRequest)->getAsJson();
 
         return $json["estado"];

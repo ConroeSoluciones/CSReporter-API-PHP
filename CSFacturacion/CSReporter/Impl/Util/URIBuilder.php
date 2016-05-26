@@ -39,9 +39,25 @@ class URIBuilder {
     }
 
     function build() {
-        // TODO: Validar
-        $uri = $this->scheme . "://" . $this->host . $this->path;
-        return ($this->params) ? $uri . "?" . http_build_query($this->params, "", "&", PHP_QUERY_RFC3986) : $uri;
+        $uri = new URI($this);
+        echo $uri;
+        return $uri;
     }
+    function getScheme() {
+        return $this->scheme;
+    }
+
+    function getHost() {
+        return $this->host;
+    }
+
+    function getPath() {
+        return $this->path;
+    }
+
+    function getParams() {
+        return $this->params;
+    }
+
 
 }

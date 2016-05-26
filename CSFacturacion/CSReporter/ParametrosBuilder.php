@@ -18,7 +18,7 @@ class ParametrosBuilder {
     private $fechaFin;
     private $status;
     private $tipo;
-    private $servicio;
+    private $servicio = Servicio::CSREPORTER;
 
     /**
      * Crea una nueva instancia
@@ -62,6 +62,11 @@ class ParametrosBuilder {
         $this->servicio = $servicio;
         return $this;
     }
+
+    function build() {
+        return new Parametros($this);       
+    }
+
     function getServicio() {
         return $this->servicio;
     }

@@ -20,15 +20,26 @@ use CSFacturacion\CSReporter\TipoCFDI;
  */
 class RequestFactory {
 
-    const CS_HOST = "csfacturacion.com";
+    const CS_HOST = "www.csfacturacion.com";
 
-    /**
+    private $wsHost;
+    
+    function __construct($wsHost) {
+        $this->wsHost = ($wsHost) ? $wsHost : self::CS_HOST;
+    }
+    
+    function getWsHost() {
+        return $this->wsHost;
+    }
+
+
+        /**
      * Crea un nuevo Request para realizar una nueva consulta.
      * @param Credenciales $credenciales
      * @param Parametros $params
      * @return \CSFacturacion\CSReporter\Impl\Util\Request
      */
-    static function newConsultaRequest(Credenciales $credenciales, Parametros $params) {
+    function newConsultaRequest(Credenciales $csCredenciales, Credenciales $credenciales, Parametros $params) {
         $tipoConsulta = ($params->getTipo() === TipoCFDI::EMITIDAS) ? "emitidas" : "recibidas";
         $rfcBusqueda = ($params->getRfcBusqueda()) ? $params->getRfcBusqueda() : "todos";
 
@@ -50,11 +61,11 @@ class RequestFactory {
         $uriBuilder = new URIBuilder();
         $uri = $uriBuilder
                 ->scheme("https")
-                ->host(RequestFactory::CS_HOST)
+                ->host($this->wsHost)
                 ->path("/webservices/csdescargasat")
                 ->params(array(
                     "method" => "ConsultaSat",
-                    "cRfcContrato" => $this->csCredenciales->getUsuario(),
+                    "cRfcContrato" => $csCredenciales->getUsuario(),
                     "cRfc" => $credenciales->getUsuario(),
                     "cPassword" => $credenciales->getPassword(),
                     "cFchI" => $params->getFechaInicio(),
@@ -69,13 +80,13 @@ class RequestFactory {
         return new Request($uri);
     }
 
-    private static function newResultadosURI($folio, $path) {
+    private function newResultadosURI($folio, $path) {
         $uriBuilder = new URIBuilder();
         return $uriBuilder
-                . scheme("https")
-                . host(RequestFactory::CS_HOST)
-                . path("/webservices/csdescargasat/resultados/" + $folio + $path)
-                . build();
+                -> scheme("https")
+                -> host($this->wsHost)
+                -> path("/webservices/csdescargasat/resultados/" + $folio + $path)
+                -> build();
     }
 
     /**
@@ -84,21 +95,21 @@ class RequestFactory {
      * @param string $folio
      * @return Request para conocer el progreso
      */
-    static function newProgresoRequest($folio) {
-        $uri = RequestFactory::newResultadosURI($folio, "/progreso");
+    function newProgresoRequest($folio) {
+        $uri = self::newResultadosURI($folio, "/progreso");
         return new Request($uri, HttpMethod::POST);
     }
 
-    static function newResultadosRequest($folio, $pagina) {
-        $uri = RequestFactory::newResultadosURI($folio, "/" . $pagina);
+    function newResultadosRequest($folio, $pagina) {
+        $uri = self::newResultadosURI($folio, "/" . $pagina);
         return new Request($uri);
     }
 
-    static function newRepetirRequest($folio) {
+    function newRepetirRequest($folio) {
         $uriBuilder = new URIBuilder();
         $uri = $uriBuilder
                 ->scheme("https")
-                ->host(RequestFactory::CS_HOST)
+                ->host($this->wsHost)
                 ->path("/webservices/csdescargasat/repetir")
                 ->build();
 
@@ -107,19 +118,19 @@ class RequestFactory {
         ));
     }
 
-    static function newDescargaRequest($folioConsulta, $folioCFDI) {
+    function newDescargaRequest($folioConsulta, $folioCFDI) {
         $uriBuilder = new URIBuilder();
         $uri = $uriBuilder
                 ->scheme("https")
-                ->host(RequestFactory::CS_HOST)
+                ->host($this->wsHost)
                 ->path("/webservices/csdescargasat/descargas/" . $folioConsulta . "/" . $folioCFDI)
                 ->build();
 
         return new Request($uri);
     }
 
-    static function newResumenRequest($folio) {
-        $uri = RequestFactory::newResultadosURI($folio, "/resumen");
+    function newResumenRequest($folio) {
+        $uri = self::newResultadosURI($folio, "/resumen");
         return new Request($uri);
     }
 

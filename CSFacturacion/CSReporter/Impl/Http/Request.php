@@ -28,7 +28,7 @@ class Request {
         $this->entity = $entity; // for post requests
     }
 
-    function getUri() {
+    function getURI() {
         return $this->uri;
     }
 

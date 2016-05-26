@@ -6,9 +6,9 @@
 
 namespace CSFacturacion\CSReporter\Impl;
 
+use CSFacturacion\CSReporter\CloseableCSReporter;
 use CSFacturacion\CSReporter\ConsultaInvalidaException;
 use CSFacturacion\CSReporter\Credenciales;
-use CSFacturacion\CSReporter\CSReporter;
 use CSFacturacion\CSReporter\Impl\Http\UserAgent;
 use CSFacturacion\CSReporter\Impl\Util\RequestFactory;
 use CSFacturacion\CSReporter\Parametros;
@@ -18,16 +18,18 @@ use CSFacturacion\CSReporter\Parametros;
  *
  * @author emerino
  */
-class CSReporterImpl implements CSReporter {
+class CSReporterImpl implements CloseableCSReporter {
 
     const TIME_FORMAT = "%G-%m-%dT%H:%M:%S";
 
     private $csCredenciales;
     private $userAgent;
+    private $requestFactory;
 
-    function __construct($csCredenciales) {
+    function __construct($csCredenciales, $csHost = null) {
         $this->csCredenciales = $csCredenciales;
         $this->userAgent = new UserAgent();
+        $this->requestFactory = new RequestFactory($csHost);
     }
 
     private function validarCredenciales() {
@@ -40,7 +42,7 @@ class CSReporterImpl implements CSReporter {
     public function consultar(Credenciales $credenciales, Parametros $params) {
         $this->validarCredenciales();
 
-        $request = RequestFactory::newConsultaRequest($credenciales, $params);
+        $request = $this->requestFactory->newConsultaRequest($this->csCredenciales, $credenciales, $params);
         $json = $this->userAgent->open($request)->getAsJson();
         $folio = $json["UUID"];
 
@@ -50,13 +52,13 @@ class CSReporterImpl implements CSReporter {
             throw new ConsultaInvalidaException($msg);
         }
 
-        return new ConsultaImpl($folio, $this->userAgent);
+        return $this->newConsulta($folio);
     }
 
-    public function buscar(string $folio) {
+    public function buscar($folio) {
         $this->validarExistente($folio);
 
-        $consulta = new ConsultaImpl($folio, $this->userAgent);
+        $consulta = newConsulta($folio);
 
         // si tiene status REPETIR, iníciala de nuevo
         if ($consulta->isRepetir()) {
@@ -69,7 +71,7 @@ class CSReporterImpl implements CSReporter {
     private function validarExistente($folio) {
         $this->validarCredenciales();
 
-        $statusRequest = RequestFactory::newProgresoRequest($folio);
+        $statusRequest = $this->requestFactory->newProgresoRequest($folio);
         $responseCode = $this->userAgent->open($statusRequest);
 
         if ($responseCode !== 200) {
@@ -81,14 +83,22 @@ class CSReporterImpl implements CSReporter {
     public function repetir($folio) {
         $this->validarExistente($folio);
 
-        $repetirRequest = RequestFactory::newRepetirRequest($folio);
+        $repetirRequest = $this->requestFactory->newRepetirRequest($folio);
         $this->userAgent->open($repetirRequest);
 
-        return new ConsultaImpl($folio, $this->userAgent);
+        return $this->newConsulta($folio);
+    }
+
+    private function newConsulta($folio) {
+        return new ConsultaImpl($folio, $this->userAgent, $this->requestFactory);
     }
 
     function getCsCredenciales() {
         return $this->csCredenciales;
+    }
+
+    public function close() {
+        $this->userAgent->close();
     }
 
 }
