@@ -40,7 +40,6 @@ class URIBuilder {
 
     function build() {
         $uri = new URI($this);
-        echo $uri;
         return $uri;
     }
     function getScheme() {
