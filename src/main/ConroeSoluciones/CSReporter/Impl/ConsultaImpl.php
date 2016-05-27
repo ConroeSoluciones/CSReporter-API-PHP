@@ -66,7 +66,6 @@ class ConsultaImpl implements Consulta {
     private function getResumen() {
         $request = $this->requestFactory->newResumenRequest($this->folio);
         $response = $this->userAgent->open($request);
-        var_dump($response);
         return $response->getAsJson();
     }
 

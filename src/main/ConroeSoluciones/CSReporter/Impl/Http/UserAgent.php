@@ -39,8 +39,7 @@ class UserAgent {
                 curl_setopt($this->ch, CURLOPT_POSTFIELDS, $request->getEntity());
             }
         } else {
-            curl_setopt($this->ch, CURLOPT_POST, false);
-            curl_setopt($this->ch, CURLOPT_POSTFIELDS, null);
+            curl_setopt($this->ch, CURLOPT_HTTPGET, true);
         }
 
         $rawResponse = curl_exec($this->ch);
