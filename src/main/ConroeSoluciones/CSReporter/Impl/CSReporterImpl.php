@@ -14,7 +14,7 @@ use CSFacturacion\CSReporter\Impl\Util\RequestFactory;
 use CSFacturacion\CSReporter\Parametros;
 
 /**
- * Description of CSReporterImpl
+ * Implementación por defecto de un CSReporter.
  *
  * @author emerino
  */

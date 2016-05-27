@@ -1,5 +1,14 @@
 {
-    "require": {
-        "codegyre/robo": "^0.7.2"
+    "name": "conroe-soluciones/csreporter",
+    "type": "library",
+    "description": "API CSReporter para PHP",
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-4": {
+            "ConroeSoluciones\\CSReporter\\": "src/main/ConroeSoluciones/CSReporter/"
+        }
+    },
+    "require-dev": {
+        "codegyre/robo": "~1"
     }
 }
