@@ -4,14 +4,14 @@
  * Copyright 2016 NueveBit, todos los derechos reservados.
  */
 
-namespace CSFacturacion\CSReporter\Impl\Util;
+namespace ConroeSoluciones\CSReporter\Impl\Util;
 
-use CSFacturacion\CSReporter\Credenciales;
-use CSFacturacion\CSReporter\Impl\Http\HttpMethod;
-use CSFacturacion\CSReporter\Impl\Http\Request;
-use CSFacturacion\CSReporter\Parametros;
-use CSFacturacion\CSReporter\StatusCFDI;
-use CSFacturacion\CSReporter\TipoCFDI;
+use ConroeSoluciones\CSReporter\Credenciales;
+use ConroeSoluciones\CSReporter\Impl\Http\HttpMethod;
+use ConroeSoluciones\CSReporter\Impl\Http\Request;
+use ConroeSoluciones\CSReporter\Parametros;
+use ConroeSoluciones\CSReporter\StatusCFDI;
+use ConroeSoluciones\CSReporter\TipoCFDI;
 
 /**
  * Contiene método de utilidad para crear Requests de CSReporter.
@@ -37,7 +37,7 @@ class RequestFactory {
      * Crea un nuevo Request para realizar una nueva consulta.
      * @param Credenciales $credenciales
      * @param Parametros $params
-     * @return \CSFacturacion\CSReporter\Impl\Util\Request
+     * @return \ConroeSoluciones\CSReporter\Impl\Util\Request
      */
     function newConsultaRequest(Credenciales $csCredenciales, Credenciales $credenciales, Parametros $params) {
         $tipoConsulta = ($params->getTipo() === TipoCFDI::EMITIDAS) ? "emitidas" : "recibidas";

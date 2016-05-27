@@ -1,6 +1,6 @@
 <?php
 
-namespace CSFacturacion\CSReporter\Impl\Util;
+namespace ConroeSoluciones\CSReporter\Impl\Util;
 
 /*
  * Copyright 2016 NueveBit, todos los derechos reservados.

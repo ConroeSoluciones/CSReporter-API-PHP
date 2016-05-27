@@ -1,6 +1,6 @@
 <?php
 
-namespace CSFacturacion\CSReporter;
+namespace ConroeSoluciones\CSReporter;
 
 /**
  * Clase que define los parámetros de búsqueda disponibles en el WS. Sólo

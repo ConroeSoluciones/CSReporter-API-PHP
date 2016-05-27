@@ -4,16 +4,16 @@
  * Copyright 2016 NueveBit, todos los derechos reservados.
  */
 
-namespace CSFacturacion\CSReporter\Impl;
+namespace ConroeSoluciones\CSReporter\Impl;
 
-use CSFacturacion\CSReporter\Consulta;
-use CSFacturacion\CSReporter\Impl\Http\UserAgent;
-use CSFacturacion\CSReporter\Impl\Util\RequestFactory;
-use CSFacturacion\CSReporter\StatusConsulta;
+use ConroeSoluciones\CSReporter\Consulta;
+use ConroeSoluciones\CSReporter\Impl\Http\UserAgent;
+use ConroeSoluciones\CSReporter\Impl\Util\RequestFactory;
+use ConroeSoluciones\CSReporter\StatusConsulta;
 use Exception;
 
 /**
- * Implementación por defecto de una CSFacturacion\CSReporter\Consulta;
+ * Implementación por defecto de una ConroeSoluciones\CSReporter\Consulta;
  *
  * @author emerino
  */

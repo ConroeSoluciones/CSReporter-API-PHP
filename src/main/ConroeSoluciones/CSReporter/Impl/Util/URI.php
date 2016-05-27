@@ -4,7 +4,7 @@
  * Copyright 2016 NueveBit, todos los derechos reservados.
  */
 
-namespace CSFacturacion\CSReporter\Impl\Util;
+namespace ConroeSoluciones\CSReporter\Impl\Util;
 
 /**
  * Representación de una URI simple.

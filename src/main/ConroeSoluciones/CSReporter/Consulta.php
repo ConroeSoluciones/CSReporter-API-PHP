@@ -1,6 +1,6 @@
 <?php
 
-namespace CSFacturacion\CSReporter;
+namespace ConroeSoluciones\CSReporter;
 
 /**
  * 'Enum' que sirve para listar los distintos STATUS posibles de una consulta.

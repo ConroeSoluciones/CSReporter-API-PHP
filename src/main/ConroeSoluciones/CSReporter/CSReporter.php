@@ -1,6 +1,6 @@
 <?php
 
-namespace CSFacturacion\CSReporter;
+namespace ConroeSoluciones\CSReporter;
 
 /**
  * Esta es la interfaz principal para iniciar la comunicación con el WS.

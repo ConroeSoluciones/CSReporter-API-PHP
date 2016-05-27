@@ -4,14 +4,14 @@
  * Copyright 2016 NueveBit, todos los derechos reservados.
  */
 
-namespace CSFacturacion\CSReporter\Impl;
+namespace ConroeSoluciones\CSReporter\Impl;
 
-use CSFacturacion\CSReporter\CloseableCSReporter;
-use CSFacturacion\CSReporter\ConsultaInvalidaException;
-use CSFacturacion\CSReporter\Credenciales;
-use CSFacturacion\CSReporter\Impl\Http\UserAgent;
-use CSFacturacion\CSReporter\Impl\Util\RequestFactory;
-use CSFacturacion\CSReporter\Parametros;
+use ConroeSoluciones\CSReporter\CloseableCSReporter;
+use ConroeSoluciones\CSReporter\ConsultaInvalidaException;
+use ConroeSoluciones\CSReporter\Credenciales;
+use ConroeSoluciones\CSReporter\Impl\Http\UserAgent;
+use ConroeSoluciones\CSReporter\Impl\Util\RequestFactory;
+use ConroeSoluciones\CSReporter\Parametros;
 
 /**
  * Implementación por defecto de un CSReporter.

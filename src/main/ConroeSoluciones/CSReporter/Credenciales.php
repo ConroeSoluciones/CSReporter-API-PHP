@@ -1,6 +1,6 @@
 <?php
 
-namespace CSFacturacion\CSReporter;
+namespace ConroeSoluciones\CSReporter;
 
 /**
  * Credenciales de acceso genéricas.

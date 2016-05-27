@@ -6,11 +6,11 @@
 
 require_once dirname(__FILE__) . '/../autoloader.php';
 
-use CSFacturacion\CSReporter\Credenciales;
-use CSFacturacion\CSReporter\Impl\CSReporterImpl;
-use CSFacturacion\CSReporter\ParametrosBuilder;
-use CSFacturacion\CSReporter\StatusCFDI;
-use CSFacturacion\CSReporter\TipoCFDI;
+use ConroeSoluciones\CSReporter\Credenciales;
+use ConroeSoluciones\CSReporter\Impl\CSReporterImpl;
+use ConroeSoluciones\CSReporter\ParametrosBuilder;
+use ConroeSoluciones\CSReporter\StatusCFDI;
+use ConroeSoluciones\CSReporter\TipoCFDI;
 
 date_default_timezone_set("America/Mexico_City");
 

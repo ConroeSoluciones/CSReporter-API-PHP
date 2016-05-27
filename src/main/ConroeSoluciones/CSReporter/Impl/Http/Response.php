@@ -4,7 +4,7 @@
  * Copyright 2016 NueveBit, todos los derechos reservados.
  */
 
-namespace CSFacturacion\CSReporter\Impl\Http;
+namespace ConroeSoluciones\CSReporter\Impl\Http;
 
 /**
  * Simplificación de una respuesta HTTP.
