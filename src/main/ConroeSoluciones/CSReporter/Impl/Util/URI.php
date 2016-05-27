@@ -22,10 +22,11 @@ class URI {
         $this->scheme = $builder->getScheme();
         $this->host = $builder->getHost();
         $this->path = $builder->getPath();
-        if (strrpos($this->path, "/") !== strlen($this->path) -1) {
+        $this->params = $builder->getParams();
+
+        if ($this->params && strrpos($this->path, "/") !== strlen($this->path) -1) {
             $this->path = $this->path . "/";
         }
-        $this->params = $builder->getParams();
     }
 
     function getScheme() {

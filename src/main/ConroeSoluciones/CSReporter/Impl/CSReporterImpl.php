@@ -44,10 +44,10 @@ class CSReporterImpl implements CloseableCSReporter {
 
         $request = $this->requestFactory->newConsultaRequest($this->csCredenciales, $credenciales, $params);
         $json = $this->userAgent->open($request)->getAsJson();
-        $folio = $json["UUID"];
+        $folio = $json->UUID;
 
         if (!trim($folio)) {
-            $msg = (isset($json["MENSAJE"])) ? $json["MENSAJE"] : "Ocurrió un error desconocido al realizar la consulta.";
+            $msg = ($json->MENSAJE) ? $json->MENSAJE : "Ocurrió un error desconocido al realizar la consulta.";
 
             throw new ConsultaInvalidaException($msg);
         }

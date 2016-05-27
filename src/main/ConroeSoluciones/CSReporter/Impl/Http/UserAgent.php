@@ -29,7 +29,8 @@ class UserAgent {
     function open(Request $request) {
         $uri = $request->getURI();
         curl_setopt($this->ch, CURLOPT_URL, $uri);
-        curl_setopt($this->ch, CURLOPT_HEADER, 0);
+        curl_setopt($this->ch, CURLOPT_HEADER, false);
+        curl_setopt($this->ch, CURLOPT_RETURNTRANSFER, true);
 
         if ($request->getMethod() === HttpMethod::POST) {
             curl_setopt($this->ch, CURLOPT_POST, true);
@@ -51,7 +52,7 @@ class UserAgent {
      * Realiza las operaciones necesarias para liberar los recursos utilizados.
      */
     function close() {
-        $this->ch->close();
+        curl_close($this->ch);
     }
 
 }

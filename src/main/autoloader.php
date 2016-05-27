@@ -6,5 +6,5 @@
 
 spl_autoload_register("register_autoload_csreporter");
 function register_autoload_csreporter($name) {
-    require_once str_replace("\\", "/", $name) . ".php";
+    require_once dirname(__FILE__) . "/" . str_replace("\\", "/", $name) . ".php";
 }

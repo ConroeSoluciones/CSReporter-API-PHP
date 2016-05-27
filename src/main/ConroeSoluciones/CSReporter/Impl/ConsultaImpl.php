@@ -57,7 +57,7 @@ class ConsultaImpl implements Consulta {
             $this->validarTerminada();
             $resumen = $this->getResumen();
 
-            $this->paginas = $resumen["paginas"];
+            $this->paginas = $resumen->paginas;
         }
 
         return $this->paginas;
@@ -65,7 +65,9 @@ class ConsultaImpl implements Consulta {
 
     private function getResumen() {
         $request = $this->requestFactory->newResumenRequest($this->folio);
-        return $this->userAgent->open($request)->getAsJson();
+        $response = $this->userAgent->open($request);
+        var_dump($response);
+        return $response->getAsJson();
     }
 
     public function getResultados($pagina) {
@@ -77,9 +79,10 @@ class ConsultaImpl implements Consulta {
 
     public function getStatus() {
         $statusRequest = $this->requestFactory->newProgresoRequest($this->folio);
-        $json = $this->userAgent->open($statusRequest)->getAsJson();
+        $response = $this->userAgent->open($statusRequest);
+        $json = $response->getAsJson();
 
-        return $json["estado"];
+        return $json->estado;
     }
 
     public function getTotalResultados() {
@@ -87,7 +90,7 @@ class ConsultaImpl implements Consulta {
 
             $this->validarTerminada();
             $resumen = $this->getResumen();
-            $this->totalResultados = $resumen["total"];
+            $this->totalResultados = $resumen->total;
         }
 
         return $this->totalResultados;

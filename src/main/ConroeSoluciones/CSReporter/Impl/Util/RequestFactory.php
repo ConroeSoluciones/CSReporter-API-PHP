@@ -85,7 +85,7 @@ class RequestFactory {
         return $uriBuilder
                 -> scheme("https")
                 -> host($this->wsHost)
-                -> path("/webservices/csdescargasat/resultados/" + $folio + $path)
+                -> path("/webservices/csdescargasat/resultados/$folio$path")
                 -> build();
     }
 
