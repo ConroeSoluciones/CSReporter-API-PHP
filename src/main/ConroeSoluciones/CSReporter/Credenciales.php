@@ -14,7 +14,7 @@ class Credenciales {
 
     private $password;
     
-    function __construct($username, $password) {
+    function __construct($username, $password=null) {
         $this->usuario = $username;
         $this->password = $password;
     }
