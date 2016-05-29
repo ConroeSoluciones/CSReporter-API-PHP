@@ -44,7 +44,7 @@ class CSReporterImpl implements CloseableCSReporter {
 
         $request = $this->requestFactory->newConsultaRequest($this->csCredenciales, $credenciales, $params);
         $json = $this->userAgent->open($request)->getAsJson();
-        $folio = $json->UUID;
+        $folio = (property_exists($json, "UUID")) ? $json->UUID : null;
 
         if (!trim($folio)) {
             $msg = (property_exists($json, "MENSAJE")) ? $json->MENSAJE : "Ocurrió un error desconocido al realizar la consulta.";
