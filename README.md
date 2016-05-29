@@ -11,6 +11,10 @@ Consta de 2 interfaces principales:
 Las implementaciones de ambas interfaces se encargan de realizar las peticiones
 HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
 
+# Dependencias
+
+* PHP 5.3+
+
 # Uso
 
 Existen 2 maneras de incluir la API como dependencia de otro proyecto: a través

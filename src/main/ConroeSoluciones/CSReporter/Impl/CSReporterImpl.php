@@ -47,7 +47,7 @@ class CSReporterImpl implements CloseableCSReporter {
         $folio = $json->UUID;
 
         if (!trim($folio)) {
-            $msg = ($json->MENSAJE) ? $json->MENSAJE : "Ocurrió un error desconocido al realizar la consulta.";
+            $msg = (property_exists($json, "MENSAJE")) ? $json->MENSAJE : "Ocurrió un error desconocido al realizar la consulta.";
 
             throw new ConsultaInvalidaException($msg);
         }
