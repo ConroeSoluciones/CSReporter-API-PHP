@@ -5,8 +5,8 @@ de nuestro Web Service.
 
 Consta de 2 interfaces principales:
 
-    CSFacturacion\CSReporter\CSReporterl
-    CSFacturacion\CSReporter\Consulta
+    ConroeSoluciones\CSReporter\CSReporter
+    ConroeSoluciones\CSReporter\Consulta
 
 Las implementaciones de ambas interfaces se encargan de realizar las peticiones
 HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
