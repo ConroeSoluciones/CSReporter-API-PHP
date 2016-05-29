@@ -39,7 +39,7 @@ el siguiente comando en la carpeta raíz del proyecto:
     composer install
 
 Con esto, la API se descargará y estará lista para usarse al incluir el archivo 
-"vendor/autoload.php" en los scripts donde se quiera trabajar con la API.
+"vendor/autoload.php" en los scripts donde se quiera trabajar con ella.
 
 ## Incluir dependencia manualmente
 
@@ -59,7 +59,8 @@ raíz del proyecto:
 
 Lo anterior generará el archivo "build/csreporter-api.zip", el cuál podrá
 ser descomprimido en otro proyecto para ser incluido manualmente, incluyendo
-el archivo "autoloader.php" incluido en la raíz del archivo comprimido.
+el archivo "autoloader.php" (incluido en la raíz del archivo comprimido) en los 
+scripts que lo requieran .
 
 ## Ejemplos de uso
 
