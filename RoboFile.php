@@ -9,8 +9,9 @@ class RoboFile extends Tasks {
     }
 
     function buildPackage() {
-        $this->taskPack("build/csreporter.zip")
-                ->add("autoloader.php")
+        $this->build();
+        
+        $this->taskPack("build/csreporter-api.zip")
                 ->addFile("", "build/classes/")
                 ->run();
     }

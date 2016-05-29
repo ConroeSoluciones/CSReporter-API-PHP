@@ -11,60 +11,56 @@ Consta de 2 interfaces principales:
 Las implementaciones de ambas interfaces se encargan de realizar las peticiones
 HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
 
-Ejemplo de uso:
+# Uso
 
-    // importar namespaces
-    use CSFacturacion\CSReporter\Impl\CSReporterImpl;
-    use CSFacturacion\CSReporter\Credenciales;
-    use CSFacturacion\CSReporter\ParametrosBuilder;
-    use CSFacturacion\CSReporter\StatusCFDI;
-    use CSFacturacion\CSReporter\TipoCFDI;
-    
+Existen 2 maneras de incluir la API como dependencia de otro proyecto: a través
+de [Composer](https://getcomposer.org/) o de manera manual.
 
-    // una instancia de un CSReporter debe permitir realizar múltiples
-    // consultas, de un mismo contrato
-    $csReporter = new CSReporterImpl(new Credenciales("usuario_cs", "pass"));
+## Incluir dependencia con Composer
 
-    // realizar una nueva consulta (la consulta es de sólo lectura),
-    $paramsBuilder = new ParametrosBuilder();
-    $consulta = $csReporter->consultar(
-            new Credenciales("RFC", "pass"),
-            $paramsBuilder 
-             ->fechaInicio("2016-01-01T00:00:00")
-             ->status(StatusCFDI::VIGENTE)
-             ->tipo(TipoCFDI::EMITIDAS)
-             ->build());
+Esta es la manera recomendada de incluir la API como dependencia de otro
+proyecto. En el archivo composer.json agregar lo siguiente:
 
-    // espera a que termine la consulta, verifica el status cada 10 segundos
-    while(!$consulta->isTerminada()) {
-        \sleep(10);
-    }
-
-    if (!$consulta->isFallo()) {
-        // imprime el status en pantalla
-        echo $consulta->getFolio());
-        echo $consulta->getStatus();
-        echo $consulta->getTotalResultados();
-
-        if ($consulta->getTotalResultados() > 0) {
-            // a partir de ahora, pueden obtenerse los resultados derivados
-            // de la consulta
-            for ($i = 1; $i <= $consulta->getPaginas(); $i++) {
-                // obtener los resultados de la primera página
-                $resultados = $consulta->getResultados($i);
-                var_dump($resultados);
+    {
+        "require": {
+            "conroe-soluciones/csreporter": "dev-master"
+        },
+        "repositories": [
+            {
+                "type": "vcs",
+                "url": "https://github.com/ConroeSoluciones/CSReporter-API-PHP.git"
             }
-        }
+        ]
     }
 
-    // para obtener una consulta que ya se había realizado previamente, por folio
-    $folio = "556cd4f8-fb9f-46d7-de58-4ad0b8102a64";
-    $consulta = $csReporter->buscar($folio);
+Una vez incluida la API como dependencia de otro proyecto, es necesario ejecutar
+el siguiente comando en la carpeta raíz del proyecto:
 
-    if ($consulta->isTerminada()) {
-        echo $consulta->getStatus();
-    }
+    composer install
 
-    // para repetir una consulta marcada con status REPETIR
-    $consulta = $csReporter->repetir($folio);
-    
+Con esto, la API se descargará y estará lista para usarse al incluir el archivo 
+"vendor/autoload.php" en los scripts donde se quiera trabajar con la API.
+
+## Incluir dependencia manualmente
+
+El ejecutor de tareas [Robo](http://robo.li/) es utilizado para generar un
+ZIP con los archivos necesarios para ser incluidos manualmente en otro
+proyecto.
+
+Para ello, es necesario descargar e instalar [Composer](https://getcomposer.org/)
+para instalar Robo como dependencia del proyecto con el siguiente comando: 
+
+    composer install
+
+Una vez descargado e instalado, ejecutar el siguiente comando desde la carpeta 
+raíz del proyecto:
+
+    vendor/bin/robo build:package
+
+Lo anterior generará el archivo "build/csreporter-api.zip", el cuál podrá
+ser descomprimido en otro proyecto para ser incluido manualmente, incluyendo
+el archivo "autoloader.php" incluido en la raíz del archivo comprimido.
+
+## Ejemplos de uso
+
+Ver el repositorio [CSReporter-API-PHP-Ejemplos](https://github.com/ConroeSoluciones/CSReporter-API-PHP-Ejemplos).
