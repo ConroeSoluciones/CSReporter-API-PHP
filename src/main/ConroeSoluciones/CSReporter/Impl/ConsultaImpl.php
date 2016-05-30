@@ -109,4 +109,8 @@ class ConsultaImpl implements Consulta {
         return (strpos($status, "COMPLETADO") === 0) || $this->isFallo();
     }
 
+    public function hasResultados() {
+        return $this->getTotalResultados() > 0;
+    }
+
 }

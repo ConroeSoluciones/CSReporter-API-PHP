@@ -82,6 +82,15 @@ interface Consulta {
     function isRepetir();
 
     /**
+     * Una consulta puede no generar resultados, si eso sucede este método
+     * devuelve true.
+     * 
+     * @return boolean true si no generó resultados la consulta, false de otro
+     * modo.
+     */
+    function hasResultados();
+    
+    /**
      * Cuando se realiza una consulta a través de un IDescargaSAT, se genera
      * un folio único que identifica la consulta.
      * 

@@ -15,7 +15,7 @@ HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
 
 * PHP 5.3+
 
-# Uso
+# Instalación
 
 Existen 2 maneras de incluir la API como dependencia de otro proyecto: a través
 de [Composer](https://getcomposer.org/) o de manera manual.
