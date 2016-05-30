@@ -14,6 +14,7 @@ HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
 # Dependencias
 
 * PHP 5.3+
+* [Composer](https://getcomposer.org/)
 
 # Instalación
 
@@ -51,21 +52,37 @@ El ejecutor de tareas [Robo](http://robo.li/) es utilizado para generar un
 ZIP con los archivos necesarios para ser incluidos manualmente en otro
 proyecto.
 
-Para ello, es necesario descargar e instalar [Composer](https://getcomposer.org/)
-para instalar Robo como dependencia del proyecto con el siguiente comando: 
+Para instalar Robo como dependencia del proyecto usar el siguiente comando: 
 
     composer install
 
 Una vez descargado e instalado, ejecutar el siguiente comando desde la carpeta 
 raíz del proyecto:
 
-    vendor/bin/robo build:package
+    vendor/bin/robo dist:package
 
 Lo anterior generará el archivo "build/csreporter-api.zip", el cuál podrá
 ser descomprimido en otro proyecto para ser incluido manualmente, incluyendo
 el archivo "autoload.php" (incluido en la raíz del archivo comprimido) en los 
-scripts que lo requieran .
+scripts que lo requieran.
 
-## Ejemplos de uso
+# Documentación
+
+El ejecutor de tareas [Robo](http://robo.li/) es utilizado para generar 
+la documentación a través de ApiGen. Para hacerlo, primero es necesario
+descargar la dependencia ApiGen con [Composer](https://getcomposer.org/) a 
+través del siguiente comando:
+
+    composer install
+
+Una vez descargada e instalada la dependencia, ejecutar el siguiente comando
+desde la carpeta raíz del proyecto:
+
+    vendor/bin/robo dist:docs
+
+Con esto se generará la documentación de la API en formato HTML, en el 
+directorio "build/docs".
+
+# Ejemplos de uso
 
 Ver el repositorio [CSReporter-API-PHP-Ejemplos](https://github.com/ConroeSoluciones/CSReporter-API-PHP-Ejemplos).

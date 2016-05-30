@@ -8,7 +8,7 @@ class RoboFile extends Tasks {
         $this->taskCopyDir(['src/main' => 'build/classes/'])->run();
     }
 
-    function buildPackage() {
+    function distPackage() {
         $this->build();
 
         $this->taskPack("build/csreporter-api.zip")
@@ -16,15 +16,28 @@ class RoboFile extends Tasks {
                 ->run();
     }
 
-    function apigen() {
+    function distDocs() {
+        $this->cleanDocs();
+
         $this->taskApiGen('./vendor/bin/apigen generate')
                 ->source("./src/main/")
                 ->destination("build/docs/")
                 ->run();
     }
 
+    function dist() {
+        $this->distPackage();
+        $this->distDocs();
+    }
+
     function clean() {
         $this->taskCleanDir(["build"])->run();
+    }
+
+    function cleanDocs() {
+        if (file_exists("build/docs")) {
+            $this->taskCleanDir(["build/docs"])->run();
+        }
     }
 
 }
