@@ -48,6 +48,11 @@ Con esto, la API se descargará y estará lista para usarse al incluir el archiv
 
 ## Incluir dependencia manualmente
 
+Ejecutar el siguiente comando para descargar el código fuente de esta 
+biblioteca (necesitas tener instalado [Git](https://git-scm.com/)):
+
+    git clone git@github.com:ConroeSoluciones/CSReporter-API-PHP.git
+
 El ejecutor de tareas [Robo](http://robo.li/) es utilizado para generar un
 ZIP con los archivos necesarios para ser incluidos manualmente en otro
 proyecto.
@@ -67,6 +72,11 @@ el archivo "autoload.php" (incluido en la raíz del archivo comprimido) en los
 scripts que lo requieran.
 
 # Documentación
+
+Ejecutar el siguiente comando para descargar el código fuente de esta 
+biblioteca (necesitas tener instalado [Git](https://git-scm.com/)):
+
+    git clone git@github.com:ConroeSoluciones/CSReporter-API-PHP.git
 
 El ejecutor de tareas [Robo](http://robo.li/) es utilizado para generar 
 la documentación a través de ApiGen. Para hacerlo, primero es necesario
