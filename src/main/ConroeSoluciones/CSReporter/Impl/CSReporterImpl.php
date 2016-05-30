@@ -76,7 +76,7 @@ class CSReporterImpl implements CloseableCSReporter {
 
         if ($responseCode !== 200) {
             throw new ConsultaInvalidaException("No existe ninguna consulta "
-            . "con el UUID dado.");
+            . "con el UUID dado [$folio].");
         }
     }
 
