@@ -58,7 +58,7 @@ class CSReporterImpl implements CloseableCSReporter {
     public function buscar($folio) {
         $this->validarExistente($folio);
 
-        $consulta = newConsulta($folio);
+        $consulta = $this->newConsulta($folio);
 
         // si tiene status REPETIR, iníciala de nuevo
         if ($consulta->isRepetir()) {
