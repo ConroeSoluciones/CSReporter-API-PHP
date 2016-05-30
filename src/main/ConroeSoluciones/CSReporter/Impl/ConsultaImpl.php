@@ -38,7 +38,7 @@ class ConsultaImpl implements Consulta {
     public function getCFDIXML($folio) {
         $this->validarTerminada();
 
-        $request = RequestFactoryDescargaRequest($this->folio, $folio);
+        $request = $this->requestFactory->newDescargaRequest($this->folio, $folio);
         return $this->userAgent->open($request)->getRawResponse();
     }
 
