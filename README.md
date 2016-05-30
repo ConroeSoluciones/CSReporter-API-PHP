@@ -1,6 +1,6 @@
 # CSReporter PHP API
 
-Provee una API sencilla para realizar consultas al portal del SAT a través
+Provee una API sencilla para realizar consultas al portal CFDI del SAT a través
 de nuestro Web Service.
 
 Consta de 2 interfaces principales:
