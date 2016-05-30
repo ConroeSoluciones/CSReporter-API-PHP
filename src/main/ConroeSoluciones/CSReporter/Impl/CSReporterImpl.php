@@ -72,7 +72,7 @@ class CSReporterImpl implements CloseableCSReporter {
         $this->validarCredenciales();
 
         $statusRequest = $this->requestFactory->newProgresoRequest($folio);
-        $responseCode = $this->userAgent->open($statusRequest);
+        $responseCode = $this->userAgent->open($statusRequest)->getCode();
 
         if ($responseCode !== 200) {
             throw new ConsultaInvalidaException("No existe ninguna consulta "
