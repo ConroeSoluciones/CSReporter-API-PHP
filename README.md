@@ -63,7 +63,7 @@ raíz del proyecto:
 
 Lo anterior generará el archivo "build/csreporter-api.zip", el cuál podrá
 ser descomprimido en otro proyecto para ser incluido manualmente, incluyendo
-el archivo "autoloader.php" (incluido en la raíz del archivo comprimido) en los 
+el archivo "autoload.php" (incluido en la raíz del archivo comprimido) en los 
 scripts que lo requieran .
 
 ## Ejemplos de uso
