@@ -9,6 +9,7 @@
         }
     },
     "require-dev": {
-        "codegyre/robo": "~1"
+        "codegyre/robo": "~1",
+        "apigen/apigen": "dev-master"
     }
 }
