@@ -63,7 +63,12 @@ class ParametrosBuilder {
         return $this;
     }
 
+    /**
+     * Construir una instancia de Parametros.
+     * @return Parametros
+     */
     function build() {
+        // TODO: Validar atributos
         return new Parametros($this);       
     }
 
