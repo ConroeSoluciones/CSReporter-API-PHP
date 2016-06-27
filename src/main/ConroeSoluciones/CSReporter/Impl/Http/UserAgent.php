@@ -43,6 +43,11 @@ class UserAgent {
         }
 
         $rawResponse = curl_exec($this->ch);
+        
+        if ($rawResponse === false) {
+            throw new \Exception(curl_error($this->ch), curl_errno($this->ch));
+        }
+        
         $code = curl_getinfo($this->ch, CURLINFO_RESPONSE_CODE);
         return new Response($rawResponse, $code);
     }
