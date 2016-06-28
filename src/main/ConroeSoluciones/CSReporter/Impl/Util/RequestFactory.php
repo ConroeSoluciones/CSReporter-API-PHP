@@ -50,7 +50,7 @@ class RequestFactory {
                 $status = "vigentes";
                 break;
             case StatusCFDI::CANCELADO:
-                $status = "cancelados";
+                $status = "canceladas";
                 break;
             default :
                 $status = "todos";
