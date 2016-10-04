@@ -23,17 +23,16 @@ class RequestFactory {
     const CS_HOST = "www.csfacturacion.com";
 
     private $wsHost;
-    
+
     function __construct($wsHost) {
         $this->wsHost = ($wsHost) ? $wsHost : self::CS_HOST;
     }
-    
+
     function getWsHost() {
         return $this->wsHost;
     }
 
-
-        /**
+    /**
      * Crea un nuevo Request para realizar una nueva consulta.
      * @param Credenciales $credenciales
      * @param Parametros $params
@@ -83,10 +82,10 @@ class RequestFactory {
     private function newResultadosURI($folio, $path) {
         $uriBuilder = new URIBuilder();
         return $uriBuilder
-                -> scheme("https")
-                -> host($this->wsHost)
-                -> path("/webservices/csdescargasat/resultados/$folio$path")
-                -> build();
+                        ->scheme("https")
+                        ->host($this->wsHost)
+                        ->path("/webservices/csdescargasat/resultados/$folio$path")
+                        ->build();
     }
 
     /**
@@ -126,7 +125,8 @@ class RequestFactory {
                 ->path("/webservices/csdescargasat/descargas/" . $folioConsulta . "/" . $folioCFDI)
                 ->build();
 
-        return new Request($uri);
+        $req = new Request($uri, HttpMethod::GET);
+        return $req->setAcceptMediaType("text/xml");
     }
 
     function newResumenRequest($folio) {

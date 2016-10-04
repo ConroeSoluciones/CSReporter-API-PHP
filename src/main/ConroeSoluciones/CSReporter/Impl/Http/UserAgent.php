@@ -42,6 +42,12 @@ class UserAgent {
             curl_setopt($this->ch, CURLOPT_HTTPGET, true);
         }
 
+        if ($request->getAcceptMediaType()) {
+            curl_setopt($this->ch, CURLOPT_HTTPHEADER, array(
+                "Accept: text/xml"
+            ));
+        }
+
         $rawResponse = curl_exec($this->ch);
         
         if ($rawResponse === false) {
