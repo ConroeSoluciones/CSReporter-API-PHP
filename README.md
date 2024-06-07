@@ -11,17 +11,22 @@ Consta de 2 interfaces principales:
 Las implementaciones de ambas interfaces se encargan de realizar las peticiones
 HTTP a la API REST del WS, presentando una API sencilla para clientes finales.
 
-# Dependencias
+## Proyecto Obsoleto
+
+**Este proyecto ya no recibe actualizaciones y dejará de funcionar el 08/10/2024** . Este repositorio será sustituido por `ConroeSoluciones\descarga-ciec-php-sdk`
+a partir del `30/09/2024`.
+
+## Dependencias
 
 * PHP 5.3+
 * [Composer](https://getcomposer.org/)
 
-# Instalación
+## Instalación
 
 Existen 2 maneras de incluir la API como dependencia de otro proyecto: a través
 de [Composer](https://getcomposer.org/) o de manera manual.
 
-## Incluir dependencia con Composer
+### Incluir dependencia con Composer
 
 Esta es la manera recomendada de incluir la API como dependencia de otro
 proyecto. En el archivo composer.json agregar lo siguiente:
@@ -46,7 +51,7 @@ el siguiente comando en la carpeta raíz del proyecto:
 Con esto, la API se descargará y estará lista para usarse al incluir el archivo 
 "vendor/autoload.php" en los scripts donde se quiera trabajar con ella.
 
-## Incluir dependencia manualmente
+### Incluir dependencia manualmente
 
 Ejecutar el siguiente comando para descargar el código fuente de esta 
 biblioteca (necesitas tener instalado [Git](https://git-scm.com/)):
@@ -71,7 +76,7 @@ ser descomprimido en otro proyecto para ser incluido manualmente, incluyendo
 el archivo "autoload.php" (incluido en la raíz del archivo comprimido) en los 
 scripts que lo requieran.
 
-# Documentación
+## Documentación
 
 Ejecutar el siguiente comando para descargar el código fuente de esta 
 biblioteca (necesitas tener instalado [Git](https://git-scm.com/)):
